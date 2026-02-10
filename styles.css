@@ -1,11 +1,12 @@
 :root {
-  --bg: #f6f7fb;
+  --bg: #f4f6fb;
   --bg-alt: #ffffff;
   --ink: #0c1b2a;
   --muted: #5b6b7a;
   --accent: #f4b21b;
   --accent-dark: #e09f0a;
   --brand: #143a5d;
+  --brand-dark: #0b243d;
   --card: #ffffff;
   --line: rgba(12, 27, 42, 0.1);
   --shadow: 0 20px 40px rgba(12, 27, 42, 0.12);
@@ -20,7 +21,7 @@
 body {
   font-family: "Manrope", system-ui, -apple-system, sans-serif;
   color: var(--ink);
-  background: var(--bg);
+  background: linear-gradient(180deg, #f5f7fc 0%, #f0f2f8 100%);
   line-height: 1.6;
 }
 
@@ -86,6 +87,13 @@ a {
   gap: 12px;
 }
 
+.logo img {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
 .logo-mark {
   background: var(--brand);
   color: white;
@@ -108,6 +116,11 @@ a {
 
 .nav a:hover {
   color: var(--ink);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .cta {
@@ -141,7 +154,8 @@ a {
 .hero {
   position: relative;
   padding: 120px 0 90px;
-  background: radial-gradient(circle at top right, rgba(244, 178, 27, 0.15), transparent 60%);
+  background: radial-gradient(circle at top right, rgba(244, 178, 27, 0.18), transparent 60%);
+  overflow: hidden;
 }
 
 .hero-grid {
@@ -149,6 +163,12 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 48px;
   align-items: center;
+}
+
+.hero--landing {
+  padding: 140px 0 110px;
+  background: radial-gradient(circle at top right, rgba(244, 178, 27, 0.22), transparent 55%),
+    linear-gradient(135deg, rgba(20, 58, 93, 0.08), transparent 40%);
 }
 
 .hero-copy h1 {
@@ -214,6 +234,56 @@ a {
   gap: 24px;
 }
 
+.hero-panel {
+  background: white;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hero-panel img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.panel-stack {
+  padding: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: #f9fbff;
+  font-weight: 600;
+}
+
+.hero-badges {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.badge {
+  background: rgba(20, 58, 93, 0.08);
+  color: var(--brand-dark);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .hero-card {
   background: white;
   border-radius: 20px;
@@ -245,6 +315,44 @@ a {
   top: 30px;
   filter: blur(10px);
   z-index: -1;
+}
+
+.page-hero {
+  padding: 120px 0 60px;
+  background: linear-gradient(135deg, rgba(20, 58, 93, 0.12), transparent 45%),
+    radial-gradient(circle at top right, rgba(244, 178, 27, 0.18), transparent 55%);
+}
+
+.page-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  margin-bottom: 12px;
+}
+
+.page-hero p {
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.highlight-card {
+  display: block;
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 50px rgba(12, 27, 42, 0.16);
 }
 
 .split {
@@ -397,6 +505,13 @@ a {
   box-shadow: var(--shadow);
 }
 
+.team-card.featured {
+  border: 2px solid var(--accent);
+  background: linear-gradient(135deg, rgba(244, 178, 27, 0.15), rgba(255, 255, 255, 0.9));
+  grid-column: 1 / -1;
+  box-shadow: 0 28px 60px rgba(12, 27, 42, 0.18);
+}
+
 .team-card .role {
   color: var(--accent-dark);
   margin-bottom: 12px;
@@ -532,5 +647,13 @@ a {
 
   .client-row {
     grid-template-columns: 1fr;
+  }
+
+  .hero--landing {
+    padding: 120px 0 90px;
+  }
+
+  .team-card.featured {
+    grid-column: auto;
   }
 }
